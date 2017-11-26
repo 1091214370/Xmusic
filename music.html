@@ -5,95 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vue</title>
-    <script src="vue.js"></script>
-    <style>
-        body{
-            margin:0;
-            padding: 0;
-        }
-        #inp{
-            width: 80%;
-            margin:20px auto;
-        }
-        #inp:after{
-            content: "";
-            display: table;
-            clear:both;
-        }
-        ul{
-            overflow: hidden;
-        }
-        li{
-            width:23%;
-            height: 200px;
-            display: block;
-            float: left;
-            border:1px solid #000;
-            margin-left: 3px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-        img{
-            width: 100%;
-        }
-        i{
-            color: red;
-        }
-    </style>
+    <title>只听好歌</title>
+    <link rel="stylesheet" type="text/css" href="static/reboot.min.css">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <script src="static/vue.js"></script>
 </head>
 
 <body>
     <div id="inp">
-        <audio id="audio" controls autoplay></audio>
-        <input type="text" v-model="key">
-        <input type="button" value="search" v-on:click="clickFun">
-        <p>共有结果{{itemCount}} 条,已加载<i v-if="itemCount >20">{{20}} </i><i v-else>{{itemCount}} </i>条</p>
-        <ul>
-            <li v-for="item in items">
-                <p>歌名：{{item.name}}  <input :id="item.id" type="button" value="播放" v-on:click="sing"></p>
-                <p>演唱者：<sapn v-if="item.ar" v-for="singer in item.ar">{{singer.name}} </span></p>
-                <img v-if="item.al" :src="item.al.picUrl">
-            </li>
-        </ul>
+        <header>
+            <div class="searchBox">
+                <input class="scanIn" placeholder="只听好歌，不听话！" type="text" v-model="key">
+                <input class="search" type="button" value="查找" v-on:click="clickFun">
+            </div>
+        </header>
+        <div class="content">
+            <p class="resultTip" v-if="showResult">共有结果{{itemCount}} 条,已加载<i v-if="itemCount >10">{{10}} </i><i v-else>{{itemCount}} </i>条</p>
+            <h2 class="defaultTip" v-else>只听好歌，不听话！</h2>
+            <ol v-if="showResult" class="resultList">
+                <li class="resultItem" v-for="item in items">
+                    <img class="resultImg" v-if="item.al" :src="item.al.picUrl">
+                    <p class="songName">{{item.name}}
+                        <input :id="item.id" type="button" value="播放" v-on:click="sing">
+                    </p>
+                    <p class="singerName">演唱者：<span v-if="item.ar" v-for="singer in item.ar">{{singer.name}} </span></p>
+                </li>
+            </ol>
+        </div>
+        <footer>
+            <audio id="audio" controls autoplay></audio>
+        </footer>
     </div>
-
-    <script>
-        let vm = new Vue({
-            el: "#inp",
-            data: {
-                key: "",
-                itemCount:"",
-                items:[],
-            },
-            methods: {
-                clickFun: function() {
-                    let xml =new XMLHttpRequest();
-                    xml.open('get',"https://api.imjad.cn/cloudmusic/?type=search&s="+this.key+"&br=128000",true);
-                    xml.send();
-                    xml.onreadystatechange = () => {
-                        if(xml.readyState===4&&xml.status===200){
-                           var res =JSON.parse(xml.responseText); 
-                            this.items= res.result.songs;
-                            this.itemCount=res.result.songCount;
-                        }
-                    }
-                },
-                sing:function(e){
-                    let id=e.target.id;
-                    let xml =new XMLHttpRequest();
-                    xml.open('get',"https://api.imjad.cn/cloudmusic/?type=song&id="+ id+ "&br=128000",true);
-                    xml.send();
-                    xml.onreadystatechange = () => {
-                        if(xml.readyState===4&&xml.status===200){
-                            var res =JSON.parse(xml.responseText); 
-                            document.getElementById("audio").src=res.data[0].url;
-                        }
-                    };
-                }
-            }
-        })
-    </script>
+    <script src="js/findOut.js"></script>
 </body>
 
 </html>
