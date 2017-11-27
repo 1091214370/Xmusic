@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>只听好歌，不听话！</title>
+    <title>Xmusic--The music APP for myself!</title>
     <link rel="shortcut icon" href="static/icon/icon.png">
     <link rel="stylesheet" href="static/css/reboot.min.css">
     <link rel="stylesheet" href="css/layout.css">
@@ -16,7 +16,7 @@
     <div id="inp">
         <header>
             <div class="searchBox">
-                <input class="scanIn" placeholder="只听好歌，不听话！" type="text" v-model="key">
+                <input class="scanIn" placeholder="找首歌儿给自己听" type="text" v-model="key">
                 <input class="search" type="button" value="查找" v-on:click="clickFun">
             </div>
         </header>
@@ -25,7 +25,7 @@
             <h2 class="defaultTip" v-else>只听好歌，不听话！</h2>
             <ol v-if="showResult" class="resultList">
                 <li class="resultItem" v-for="item in items" >
-                    <img class="resultImg" v-if="item.al" :src="item.al.picUrl">
+                    <div class="resultImg" v-if="item.al"></div>
                     <p class="songName"><span :id="item.id" v-on:click="sing">{{item.name}}</span></p>
                     <p class="singerName"><span v-if="item.ar" v-for="singer in item.ar">{{singer.name}} </span></p>
                 </li>
@@ -37,9 +37,14 @@
         </div>
         <footer>
             <div class="controlBtns">
-                <audio id="audio" controls autoplay></audio>
+            	<img class="poster" alt="poster" src="static/icon/icon.png">
+            	<div class="befSong"></div>
+            	<div class="playSong"></div>
+            	<div class="nextSong"></div>
+                <div class="loopList"></div>
             </div>
-            <div class="lyric"></div>
+            <div class="lyric">{{key}}</div>
+            <audio id="audio" controls autoplay></audio>
         </footer>
     </div>
     <script src="js/findOut.js"></script>

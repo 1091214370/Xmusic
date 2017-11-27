@@ -132,8 +132,13 @@ header {
             font-size: 1.2rem;
             .resultImg {
                 width: 3rem;
+                height: 3rem;
                 display: block;
+                margin:0 .5rem;
                 float: left;
+                border-radius: 50%;
+                background: url(../static/images/playDef.png) no-repeat;
+                background-size: 3rem;
             }
             .songName {
 
@@ -148,7 +153,7 @@ header {
                     overflow: hidden;
                     text-overflow: ellipsis;
                     cursor: pointer;
-                    display: block;
+                    display: inline-block;
                     &:hover {
                         color: #008B8B;
                     }
@@ -171,10 +176,10 @@ header {
                 text-align: left;
             }
             &:nth-child(2n) {
-                background-color: #fff;
+                background-color: rgba(255, 255, 255, 0.2);
             }
             &:nth-child(2n+1) {
-                background-color: #C1FFC1;
+                background-color: rgba(193, 255, 193, 0.2);
             }
         }
     }
@@ -182,6 +187,7 @@ header {
 
 footer {
     flex: 1;
+    min-height: 4rem;
     height: 4rem;
     background-color: #54FF9F;
     display: flex;
@@ -192,5 +198,80 @@ footer {
     bottom: 0;
     #audio {
         display: none;
+    }
+    .controlBtns {
+        min-width: 30rem;
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        @media screen and (max-width: 900px) {
+            flex:2;
+            min-width:20rem;
+        }
+        @media screen and (max-width: 620px) {
+            flex:1;
+            width:20rem;
+        }
+        .poster {
+            flex: 1;
+            max-width: 4rem;
+            height: 4rem;
+            display: block;
+            background-color: #fff;
+            margin-left: 5rem;
+            @media screen and (max-width: 900px) {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            @media screen and (max-width: 620px) {
+                margin-left:1rem;
+            }
+        }
+        div {
+            flex: 1;
+            width: 3rem;
+            height: 3rem;
+            background-size: 3rem;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .befSong {
+            background-image: url(../static/images/sys.png);
+        }
+        .playSong {
+            background-image: url(../static/images/start.png);
+        }
+        .nextSong {
+            background-image: url(../static/images/xys.png);
+        }
+        .ztSong {
+            background-image: url(../static/images/zt.png);
+        }
+        .loopOne {
+            background-image: url(../static/images/dqxh.png);
+        }
+        .loopList {
+            background-image: url(../static/images/sxbf.png);
+        }
+    }
+    .lyric {
+        flex: 2;
+        height: 4rem;
+        overflow: hidden;
+        text-align: center;
+        padding: 0 1rem;
+        font-size: 1.6rem;
+        line-height: 4rem;
+        letter-spacing: .2rem;
+        color: #fff;
+        font-weight: bolder;
+        @media screen and (max-width: 900px) {
+            flex: 3;
+        }
+        @media screen and (max-width: 620px) {
+            display: none;
+        }
     }
 }

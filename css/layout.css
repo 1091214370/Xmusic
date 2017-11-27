@@ -112,8 +112,13 @@ header {
       font-size: 1.2rem; }
       .content .resultList .resultItem .resultImg {
         width: 3rem;
+        height: 3rem;
         display: block;
-        float: left; }
+        margin: 0 .5rem;
+        float: left;
+        border-radius: 50%;
+        background: url(../static/images/playDef.png) no-repeat;
+        background-size: 3rem; }
       .content .resultList .resultItem .songName {
         flex: 5;
         height: inherit;
@@ -126,7 +131,7 @@ header {
           overflow: hidden;
           text-overflow: ellipsis;
           cursor: pointer;
-          display: block; }
+          display: inline-block; }
           .content .resultList .resultItem .songName span:hover {
             color: #008B8B; }
       .content .resultList .resultItem .singerName {
@@ -141,12 +146,13 @@ header {
       .content .resultList .resultItem .nextPage {
         text-align: left; }
       .content .resultList .resultItem:nth-child(2n) {
-        background-color: #fff; }
+        background-color: rgba(255, 255, 255, 0.2); }
       .content .resultList .resultItem:nth-child(2n+1) {
-        background-color: #C1FFC1; }
+        background-color: rgba(193, 255, 193, 0.2); }
 
 footer {
   flex: 1;
+  min-height: 4rem;
   height: 4rem;
   background-color: #54FF9F;
   display: flex;
@@ -157,5 +163,70 @@ footer {
   bottom: 0; }
   footer #audio {
     display: none; }
+  footer .controlBtns {
+    min-width: 30rem;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
+    @media screen and (max-width: 900px) {
+      footer .controlBtns {
+        flex: 2;
+        min-width: 20rem; } }
+    @media screen and (max-width: 620px) {
+      footer .controlBtns {
+        flex: 1;
+        width: 20rem; } }
+    footer .controlBtns .poster {
+      flex: 1;
+      max-width: 4rem;
+      height: 4rem;
+      display: block;
+      background-color: #fff;
+      margin-left: 5rem; }
+      @media screen and (max-width: 900px) {
+        footer .controlBtns .poster {
+          margin-left: 1rem;
+          margin-right: 1rem; } }
+      @media screen and (max-width: 620px) {
+        footer .controlBtns .poster {
+          margin-left: 1rem; } }
+    footer .controlBtns div {
+      flex: 1;
+      width: 3rem;
+      height: 3rem;
+      background-size: 3rem;
+      background-repeat: no-repeat;
+      background-position: center; }
+    footer .controlBtns .befSong {
+      background-image: url(../static/images/sys.png); }
+    footer .controlBtns .playSong {
+      background-image: url(../static/images/start.png); }
+    footer .controlBtns .nextSong {
+      background-image: url(../static/images/xys.png); }
+    footer .controlBtns .ztSong {
+      background-image: url(../static/images/zt.png); }
+    footer .controlBtns .loopOne {
+      background-image: url(../static/images/dqxh.png); }
+    footer .controlBtns .loopList {
+      background-image: url(../static/images/sxbf.png); }
+  footer .lyric {
+    flex: 2;
+    height: 4rem;
+    overflow: hidden;
+    text-align: center;
+    padding: 0 1rem;
+    font-size: 1.6rem;
+    line-height: 4rem;
+    letter-spacing: .2rem;
+    color: #fff;
+    font-weight: bolder; }
+    @media screen and (max-width: 900px) {
+      footer .lyric {
+        flex: 3; } }
+    @media screen and (max-width: 620px) {
+      footer .lyric {
+        display: none; } }
 
 /*# sourceMappingURL=layout.css.map */

@@ -37,6 +37,7 @@ let vm = new Vue({
                     document.getElementById("audio").src = res.data[0].url;
                 }
             };
+            // :src="item.al.picUrl"
         }
     }
 })
