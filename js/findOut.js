@@ -10,7 +10,7 @@ let vm = new Vue({
     methods: {
         clickFun: function() {
             let xml = new XMLHttpRequest();
-            xml.open('get', "https://api.imjad.cn/cloudmusic/?type=search&s=" + this.key + "&br=128000&limit=10", true);
+            xml.open('get', "https://api.imjad.cn/cloudmusic/?type=search&s=" + this.key + "&br=128000&limit=8", true);
             xml.send();
             xml.onreadystatechange = () => {
                 if (xml.readyState === 4 && xml.status === 200) {

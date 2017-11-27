@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>只听好歌</title>
-    <link rel="stylesheet" type="text/css" href="static/reboot.min.css">
-    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <title>只听好歌，不听话！</title>
+    <link rel="shortcut icon" href="static/icon.png">
+    <link rel="stylesheet" href="static/reboot.min.css">
+    <link rel="stylesheet" href="css/layout.css">
     <script src="static/vue.js"></script>
 </head>
 
@@ -20,7 +21,7 @@
             </div>
         </header>
         <div class="content">
-            <p class="resultTip" v-if="showResult">共有结果{{itemCount}} 条,已加载<i v-if="itemCount >10">{{10}} </i><i v-else>{{itemCount}} </i>条</p>
+            <p class="resultTip" v-if="showResult">共有结果{{itemCount}} 条,已加载<i v-if="itemCount >8">{{8}} </i><i v-else>{{itemCount}} </i>条</p>
             <h2 class="defaultTip" v-else>只听好歌，不听话！</h2>
             <ol v-if="showResult" class="resultList">
                 <li class="resultItem" v-for="item in items">
@@ -28,9 +29,14 @@
                     <p class="songName">{{item.name}}
                         <input :id="item.id" type="button" value="播放" v-on:click="sing">
                     </p>
-                    <p class="singerName">演唱者：<span v-if="item.ar" v-for="singer in item.ar">{{singer.name}} </span></p>
+                    <p class="singerName"><span v-if="item.ar" v-for="singer in item.ar">{{singer.name}} </span></p>
+                </li>
+                <li class="resultItem">
+                	<p class="beforePage">上一页</p>
+                	<p class="nextPage">下一页</p>
                 </li>
             </ol>
+
         </div>
         <footer>
             <audio id="audio" controls autoplay></audio>
