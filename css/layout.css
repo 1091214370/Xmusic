@@ -17,7 +17,7 @@ header {
   min-height: 8rem;
   max-height: 8rem;
   flex: 1;
-  background-color: #a80b16;
+  background-color: #54FF9F;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,19 +49,23 @@ header {
       float: right;
       padding-left: 1rem;
       padding-right: 1rem;
-      font-size: 1.6rem; }
+      font-size: 1.6rem;
+      background-color: #fff; }
     header .searchBox .search {
       flex: 1;
       height: 100%;
       margin: auto;
       display: block;
-      font-size: 1.6rem; }
+      font-size: 1.6rem;
+      background-color: #fff;
+      border-left: 1px solid #C1FFC1;
+      cursor: pointer; }
 
 .content {
   width: 100%;
   min-height: 40rem;
   margin: 0 auto;
-  background: radial-gradient(#E8E8E8, #fff);
+  background: radial-gradient(#C1FFC1, #fff);
   flex: 5;
   display: flex;
   flex-direction: column; }
@@ -73,7 +77,7 @@ header {
     width: 80%;
     height: 2rem;
     display: block;
-    margin: 1rem auto;
+    margin: 1rem auto 0 auto;
     line-height: 1.6rem;
     font-size: 1.6rem; }
     .content .resultTip i {
@@ -112,9 +116,19 @@ header {
         float: left; }
       .content .resultList .resultItem .songName {
         flex: 5;
+        height: inherit;
         padding-left: .5rem;
         font-size: 1.6rem;
         line-height: 1.6rem; }
+        .content .resultList .resultItem .songName span {
+          max-height: 1.6rem;
+          line-height: 1.6rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          cursor: pointer;
+          display: block; }
+          .content .resultList .resultItem .songName span:hover {
+            color: #008B8B; }
       .content .resultList .resultItem .singerName {
         color: #696969;
         flex: 3; }
@@ -129,19 +143,19 @@ header {
       .content .resultList .resultItem:nth-child(2n) {
         background-color: #fff; }
       .content .resultList .resultItem:nth-child(2n+1) {
-        background-color: #E8E8E8; }
+        background-color: #C1FFC1; }
 
 footer {
   flex: 1;
-  background-color: #000;
+  height: 4rem;
+  background-color: #54FF9F;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   position: static;
   bottom: 0; }
   footer #audio {
-    background-color: #000;
-    color: #fff;
     display: none; }
 
 /*# sourceMappingURL=layout.css.map */
