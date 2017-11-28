@@ -10,22 +10,35 @@
     <link rel="stylesheet" href="static/css/reboot.min.css">
     <link rel="stylesheet" href="css/layout.css">
     <script src="static/js/vue.js"></script>
+    <script>
+    /**
+     * 图片预加载
+     */
+    (function preloadimages(arr) {
+        var newimages = [];
+        var arr = (typeof arr != "object") ? [arr] : arr; //确保参数总是数组
+        for (var i = 0; i < arr.length; i++) {
+            newimages[i] = new Image();
+            newimages[i].src = "static/images/" + arr[i] + ".png";
+        }
+    })(["dqxh", "playDef", "playing", "start", "sxbf"], "sys", "xys", "zt");
+    </script>
 </head>
 
 <body>
     <div id="inp">
         <header>
             <div class="searchBox">
-                <input class="scanIn" placeholder="找首歌儿给自己听" type="text" v-model="key">
-                <input class="search" type="button" value="查找" v-on:click="clickFun">
+                <input class="scanIn" placeholder="找首歌儿给自己听" type="text" v-model="key" @keyup.enter="clickFun">
+                <input class="search" type="button" value="查找" @click="clickFun">
             </div>
         </header>
         <div class="content">
             <!-- <p class="resultTip" v-if="showResult">共有结果{{itemCount}} 条,已加载<i v-if="itemCount >8">{{8}} </i><i v-else>{{itemCount}} </i>条</p> -->
             <h2 class="defaultTip" v-if="!showResult">只听好歌，不听话！</h2>
             <ol v-if="showResult" class="resultList">
-                <li class="resultItem" v-for="item in items" >
-                    <div class="resultImg playDef" v-if="item.al" ></div>
+                <li class="resultItem" v-for="item in items">
+                    <div class="resultImg playDef" v-if="item.al"></div>
                     <p class="songName"><span :id="item.id" @click.stop="sing">{{item.name}}</span></p>
                     <p class="singerName"><span v-if="item.ar" v-for="singer in item.ar">{{singer.name}} </span></p>
                 </li>
@@ -33,11 +46,11 @@
         </div>
         <footer>
             <div class="controlBtns">
-            	<img class="poster" alt="poster" src="static/icon/icon.png">
-            	<div class="befSong"></div>
+                <img class="poster" alt="poster" src="static/icon/icon.png">
+                <div class="befSong"></div>
                 <div :class="{playSong:!isPlay,pauseSong:isPlay}" @click.stop="playOrPause"></div>
-            	<div class="nextSong"></div>
-                <div :class="{loopList:isLoop,loopOne:!isLoop}" @click.stop="loopOrList"></div>
+                <div class="nextSong"></div>
+                <div :class="{loopList:!isLoop,loopOne:isLoop}" @click.stop="loopOrList"></div>
             </div>
             <div class="lyric">{{key}}</div>
             <audio id="audio"></audio>

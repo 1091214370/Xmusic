@@ -6,7 +6,7 @@ let vm = new Vue({
         itemCount: "",
         showResult: false,
         isPlay: false,
-        isLoop: true,
+        isLoop: false,
         items: [],
         tip: ""
     },
@@ -48,7 +48,7 @@ let vm = new Vue({
         },
         // 创建播放列表
         createSongsList: function() {
-
+            
         },
         /**
          * 列表播放与显示正在播放
@@ -86,4 +86,10 @@ let vm = new Vue({
             this.isLoop = !this.isLoop;
         }
     }
-})
+});
+audio.onended=function(){
+    vm.isPlay=false;
+};
+audio.onplay=function(){
+    vm.isPlay=true;
+}
