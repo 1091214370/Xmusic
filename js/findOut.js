@@ -78,6 +78,11 @@ let vm = new Vue({
         //下一曲
         //单曲循环、顺序播放
         loopOrList: function() {
+            if(this.isLoop){
+                audio.loop=false;
+            }else{
+                audio.loop=true;
+            }
             this.isLoop = !this.isLoop;
         }
     }
