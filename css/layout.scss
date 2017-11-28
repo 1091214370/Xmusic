@@ -83,6 +83,8 @@ header {
     margin: 0 auto;
     background: radial-gradient(#C1FFC1, #fff);
     flex: 5;
+    overflow-x:hidden;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     p {
@@ -113,7 +115,6 @@ header {
     }
     .resultList {
         width: 80%;
-        overflow: hidden;
         display: flex;
         flex-direction: column;
         margin: .5rem auto;
@@ -137,8 +138,14 @@ header {
                 margin:0 .5rem;
                 float: left;
                 border-radius: 50%;
-                background: url(../static/images/playDef.png) no-repeat;
+                background-repeat: no-repeat;
                 background-size: 3rem;
+            }
+            .playDef{
+                background-image: url(../static/images/playDef.png);
+            }
+            .playing{
+                background-image: url(../static/images/playing.png);
             }
             .songName {
 
@@ -146,21 +153,21 @@ header {
                 height: inherit;
                 padding-left: .5rem;
                 font-size: 1.6rem;
-                line-height: 2rem;
+                line-height: 3rem;
                 span {
                     max-height: 1.6rem;
-                    line-height: 2rem;
+                    line-height: 1.6rem;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     cursor: pointer;
                     display: inline-block;
-                    &:hover {
-                        color: #008B8B;
+                    &:hover{
+                        color: #1874CD;
                     }
+                    
                 }
             }
             .singerName {
-
                 color: #696969;
                 flex: 3;
             }
@@ -176,10 +183,10 @@ header {
                 text-align: left;
             }
             &:nth-child(2n) {
-                background-color: rgba(255, 255, 255, 0.2);
+                background-color: rgba(255, 255, 255, 0.1);
             }
             &:nth-child(2n+1) {
-                background-color: rgba(193, 255, 193, 0.2);
+                background-color: rgba(193, 255, 193, 0.1);
             }
         }
     }
@@ -221,6 +228,7 @@ footer {
             display: block;
             background-color: #fff;
             margin-left: 5rem;
+            cursor: pointer;
             @media screen and (max-width: 900px) {
                 margin-left: 1rem;
                 margin-right: 1rem;
@@ -236,6 +244,7 @@ footer {
             background-size: 2rem;
             background-repeat: no-repeat;
             background-position: center;
+            cursor: pointer;
         }
         .befSong {
             background-image: url(../static/images/sys.png);
@@ -246,7 +255,7 @@ footer {
         .nextSong {
             background-image: url(../static/images/xys.png);
         }
-        .ztSong {
+        .pauseSong {
             background-image: url(../static/images/zt.png);
         }
         .loopOne {

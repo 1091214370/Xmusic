@@ -67,6 +67,8 @@ header {
   margin: 0 auto;
   background: radial-gradient(#C1FFC1, #fff);
   flex: 5;
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column; }
   .content p {
@@ -93,7 +95,6 @@ header {
     margin-top: -.8rem; }
   .content .resultList {
     width: 80%;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     margin: .5rem auto;
@@ -117,23 +118,27 @@ header {
         margin: 0 .5rem;
         float: left;
         border-radius: 50%;
-        background: url(../static/images/playDef.png) no-repeat;
+        background-repeat: no-repeat;
         background-size: 3rem; }
+      .content .resultList .resultItem .playDef {
+        background-image: url(../static/images/playDef.png); }
+      .content .resultList .resultItem .playing {
+        background-image: url(../static/images/playing.png); }
       .content .resultList .resultItem .songName {
         flex: 5;
         height: inherit;
         padding-left: .5rem;
         font-size: 1.6rem;
-        line-height: 2rem; }
+        line-height: 3rem; }
         .content .resultList .resultItem .songName span {
           max-height: 1.6rem;
-          line-height: 2rem;
+          line-height: 1.6rem;
           overflow: hidden;
           text-overflow: ellipsis;
           cursor: pointer;
           display: inline-block; }
           .content .resultList .resultItem .songName span:hover {
-            color: #008B8B; }
+            color: #1874CD; }
       .content .resultList .resultItem .singerName {
         color: #696969;
         flex: 3; }
@@ -146,9 +151,9 @@ header {
       .content .resultList .resultItem .nextPage {
         text-align: left; }
       .content .resultList .resultItem:nth-child(2n) {
-        background-color: rgba(255, 255, 255, 0.2); }
+        background-color: rgba(255, 255, 255, 0.1); }
       .content .resultList .resultItem:nth-child(2n+1) {
-        background-color: rgba(193, 255, 193, 0.2); }
+        background-color: rgba(193, 255, 193, 0.1); }
 
 footer {
   flex: 1;
@@ -184,7 +189,8 @@ footer {
       height: 4rem;
       display: block;
       background-color: #fff;
-      margin-left: 5rem; }
+      margin-left: 5rem;
+      cursor: pointer; }
       @media screen and (max-width: 900px) {
         footer .controlBtns .poster {
           margin-left: 1rem;
@@ -198,14 +204,15 @@ footer {
       height: 2rem;
       background-size: 2rem;
       background-repeat: no-repeat;
-      background-position: center; }
+      background-position: center;
+      cursor: pointer; }
     footer .controlBtns .befSong {
       background-image: url(../static/images/sys.png); }
     footer .controlBtns .playSong {
       background-image: url(../static/images/start.png); }
     footer .controlBtns .nextSong {
       background-image: url(../static/images/xys.png); }
-    footer .controlBtns .ztSong {
+    footer .controlBtns .pauseSong {
       background-image: url(../static/images/zt.png); }
     footer .controlBtns .loopOne {
       background-image: url(../static/images/dqxh.png); }
