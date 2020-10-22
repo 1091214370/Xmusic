@@ -10,9 +10,9 @@
       <h2 class="defaultTip" v-if="!showResult">只听好歌，不听话！</h2>
       <ol v-if="showResult" class="resultList">
         <li class="resultItem" v-for="item in items">
-          <div class="resultImg playDef" v-if="item.al"></div>
+          <div class="resultImg playDef" v-if="item.album"></div>
           <p class="songName"><span :id="item.id" @click.stop="sing">{{item.name}}</span></p>
-          <p class="singerName"><span v-if="item.ar" v-for="singer in item.ar">{{singer.name}} </span></p>
+          <p class="singerName"><span v-if="item.artists" v-for="singer in item.artists">{{singer.name}} </span></p>
         </li>
       </ol>
     </div>
