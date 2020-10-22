@@ -11,7 +11,7 @@ const versionRequirements = [
   {
     name: 'node',
     currentVersion: semver.clean(process.version),
-    versionRequirement: packageConfig.engines.node
+    versionRequirement: undefined
   }
 ]
 
@@ -19,21 +19,21 @@ if (shell.which('npm')) {
   versionRequirements.push({
     name: 'npm',
     currentVersion: exec('npm --version'),
-    versionRequirement: packageConfig.engines.npm
+    versionRequirement: undefined
   })
 }
 
 module.exports = function () {
   const warnings = []
-  for (let i = 0; i < versionRequirements.length; i++) {
-    const mod = versionRequirements[i]
-    if (!semver.satisfies(mod.currentVersion, mod.versionRequirement)) {
-      warnings.push(mod.name + ': ' +
-        chalk.red(mod.currentVersion) + ' should be ' +
-        chalk.green(mod.versionRequirement)
-      )
-    }
-  }
+  // for (let i = 0; i < versionRequirements.length; i++) {
+  //   const mod = versionRequirements[i]
+  //   if (!semver.satisfies(mod.currentVersion, mod.versionRequirement)) {
+  //     warnings.push(mod.name + ': ' +
+  //       chalk.red(mod.currentVersion) + ' should be ' +
+  //       chalk.green(mod.versionRequirement)
+  //     )
+  //   }
+  // }
 
   if (warnings.length) {
     console.log('')
